@@ -1,6 +1,6 @@
 # AlgoritmaSifrelemeOdev
 ## Önemli Bilgi
-- Benim Kullandığım Program CLion. Eğer Başka Bir Derleyici veya Program Kullanıyorsanız Dosya Bulunamadı Hatasından Sonra Da Sizden Öteleme Miktarı İsteyecektir. Bu Durumu Düzeltmek İçin **Programın Başında Size Sorulan Soruyu Kendi Derleyicinize Göre Cevaplamalısınız** 
+- Benim Kullandığım Program CLion. Eğer Başka Bir Derleyici veya Program Kullanıyorsanız Dosya Bulunamadı Hatasından Sonra Da Sizden Öteleme Miktarı İsteyecektir. Bu Durumu Düzeltmek İçin **Programın Başında Size Sorulan Soruyu Kendi Derleyicinize Göre Cevaplamalısınız**. Vereceğiniz Cevap Minimum Dosya Uzunluğunu Verecektir. Ve Program Buna Göre Çalışacaktır.
 ## Program Hakkında Genel Bilgiler
 - Şifreleme Programım Verdiğiniz Tam Sayı Kadar Girdiğiniz Metni İleri ya da Geri Doğru Öteleyebilmektedir.
 - Programı Çalıştırdığınızda 3 Seçenek Göreceksiniz Bunlardan 1.si Şifreleme, 2.si Deşifreleme, 3.sü Programı Sonlandırma Fonksiyonlarıdır.
