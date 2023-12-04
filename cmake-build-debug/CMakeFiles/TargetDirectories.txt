@@ -1,0 +1,3 @@
+C:/Users/rey_t/CLionProjects/SifrelemeProgram/cmake-build-debug/CMakeFiles/SifrelemeProgram.dir
+C:/Users/rey_t/CLionProjects/SifrelemeProgram/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/rey_t/CLionProjects/SifrelemeProgram/cmake-build-debug/CMakeFiles/rebuild_cache.dir
