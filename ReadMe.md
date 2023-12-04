@@ -147,7 +147,7 @@ char withFile(char text[]){     //Dosyadan okuma veya dosyaya yazma operasyonu.
 }
 char deEncryptOperation(int gecerleme) {
     int i=0,numberOfScroll,answer;
-    char getText[100];
+    char getText[1000];
     printf("Islemi Dosya ile Yapacaksaniz 1\nYapmayacaksaniz Herhangi Bir Tusa Basin\n");
     scanf("%d",&answer);        //Kullanıcının dosyayla mı yoksa normal yolla mı ilem yapacağını soruyoruz.
     if(answer == 1){
@@ -156,13 +156,13 @@ char deEncryptOperation(int gecerleme) {
             return 1;}
     }
     else {
-        printf("Lutfen Kirilacak Sifreyi Girin\nSifrenin Max Uzunlugu 100 Karakter Olmalidir\n");  //Normal yol için kullanıcıdan metni alıyoruz.
+        printf("Lutfen Kirilacak Sifreyi Girin\nSifrenin Max Uzunlugu 1000 Karakter Olmalidir\n");  //Normal yol için kullanıcıdan metni alıyoruz.
         takePassword:
         gets(getText);              //gets fonksiyonlarıyla metnimizi alıyoruz.
         gets(getText);
 
-        if (strlen(getText) > 100) {                    //Şifre istenen miktardan uzunsa şifreyi tekrar yazdırıyoruz.
-            printf("Sifre 100 Karakterden Buyuk Olamaz\n");
+        if (strlen(getText) > 1000) {                    //Şifre istenen miktardan uzunsa şifreyi tekrar yazdırıyoruz.
+            printf("Sifre 1000 Karakterden Buyuk Olamaz\n");
             goto takePassword;
         }
     }
@@ -176,7 +176,7 @@ char deEncryptOperation(int gecerleme) {
 
     deEncrypt(getText, numberOfScroll); //Aldığımız verileri deşifreleme operasyonuna gönderiyoruz.
     printf("Sifresi Cozulen Metin : ");    //Deşifrelenen metni yazdırıyoruz.
-    while(i<= strlen(getText)-(answer==1?4:0)){      //-4 olma sebebi dosya sonunu bulurken ekstra harf tanımlıyor. O harfleri yazmıyoruz.
+    while(i<= strlen(getText)){      
         putchar(getText[i]);
         ++i;
     }
@@ -186,7 +186,7 @@ char deEncryptOperation(int gecerleme) {
 }
 
 char encryptOperation(int gecerleme) {
-    char getText[100];                  //Deşifreleme operasyonundaki yaptığımız şeylerden farklı olarak yaptığımız bir şey yok.
+    char getText[1000];                  //Deşifreleme operasyonundaki yaptığımız şeylerden farklı olarak yaptığımız bir şey yok.
     int i=0,answer,numberOfScroll;
     printf("Islemi Dosya ile Yapacaksaniz 1\nYapmayacaksaniz Herhangi Bir Tusa Basin\n");
     scanf("%d",&answer);
@@ -196,14 +196,14 @@ char encryptOperation(int gecerleme) {
             return 1;}
     }
     if(answer!=1) {
-        printf("Lutfen Sifrelenecek Olan Metni Girin\nSifrenin Max Uzunlugu 100 Karakter Olmalidir\n");
+        printf("Lutfen Sifrelenecek Olan Metni Girin\nSifrenin Max Uzunlugu 1000 Karakter Olmalidir\n");
         takePassword:
         gets(getText);
         gets(getText);
 
 
-        if (strlen(getText) > 100) {
-            printf("Metin 100 Karakterden Buyuk Olamaz\n");
+        if (strlen(getText) > 1000) {
+            printf("Metin 1000 Karakterden Buyuk Olamaz\n");
             fflush(stdin);
             goto takePassword;
         }
@@ -218,7 +218,7 @@ char encryptOperation(int gecerleme) {
 
     encrypt(getText, numberOfScroll);
     printf("Sifrelenen Metin : ");
-    while(i<= strlen(getText)-(answer==1?4:0)){
+    while(i<= strlen(getText)){
         putchar(getText[i]);
         ++i;
     }
