@@ -132,8 +132,8 @@ char deEncryptOperation(int gecerleme) {
 
 }
 
-char encryptOperation(int gecerleme) {           //Şifreleme operasyonunda ekstra olarak anlatacağım bir şey yok.
-    char getText[100];              //Deşifreleme operasyonundaki yaptığımız şeylerden farklı olarak yaptığımız bir şey yok.
+char encryptOperation(int gecerleme) {
+    char getText[100];                  //Deşifreleme operasyonundaki yaptığımız şeylerden farklı olarak yaptığımız bir şey yok.
     int answer,numberOfScroll;
     printf("Islemi Dosya ile Yapacaksaniz 1\nYapmayacaksaniz Herhangi Bir Tusa Basin\n");
     scanf("%d",&answer);
