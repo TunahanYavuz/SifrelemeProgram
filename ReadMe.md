@@ -43,17 +43,63 @@
 ```
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
+
+char encryptOperation(int gecerleme);
+char deEncryptOperation(int gecerleme); //Fonksiyonları tanımlıyoruz
+
+int main() {
+    int operation,control;
+    home:                   //Kullanıcının derleyicisine göre mininmum bir dosya uzunluğu alıyoruz.
+    printf("Readme De Bahsettigim Uzere Derleyicinize Gore Bir Sayi Giriniz.\n\tBu Sayi Dosyanizin Minimum Uzunluğunu Belirtecektir");
+    if(scanf("%d",&control) != 1){
+        printf("Lutfen Gecerli Bir Sayi Giriniz");
+        fflush(stdin);
+        goto home;
+    }
+
+    printf("Lutfen Yapmak Istediginiz Operasyonu Secin:\n");
+    askAgain:           //Kullanıcının yapmak istediği işlemi soruyoruz.
+    printf("1=Sifreleme\n"
+           "2=Desifreleme\n"
+           "3=Programi Sonlandir\n");
+    if(scanf("%d", &operation)!=1){         //Girilen değerin sayı olup olmadığını kontrol ediyoruz.
+        printf("Lutfen Sadece Sayi Giriniz\n");
+        fflush(stdin);
+        goto askAgain;
+    }
+    switch (operation) {            //Seçilen operasyona göre işlemi yapıyoruz.
+        case 1:
+            encryptOperation(control);
+            printf("Lutfen Diger Operasyonu Seciniz\n");
+            goto askAgain;
+        case 2:                     //Her operasyon için kullanıcıya işlemi tekrar soruyoruz. Eğer kullanıcı çıkış yapmak istiyorsa 3 sayısını girmeli.
+            deEncryptOperation(control);
+            printf("Lutfen Diger Operasyonu Seciniz\n");
+            goto askAgain;
+        case 3:
+            break;
+        default:        //Farklı bir değer girilirse kullanıcıya tekrar soruyoruz.
+            printf("Bilinmeyen Bir Islem Girdiniz\n\tLutfen Tekrar Deneyiniz\n");
+            goto askAgain;
+
+    }
+
+
+    return 0;
+}
+
+
+
 void encrypt(char password[], int scroll){
     unsigned int lenght = strlen(password);  //Dizinin uzunluğunu tuttuğumuz değer.
 
     for (int i = 0; i < lenght; ++i) {           //Şifreleme Operasyonumuz
-        if(password[i] >= 'a' && password[i] <= 'z'){
-            password[i]= 'a' + ((password[i] - 'a' + scroll % 26) + 26) % 26;
-        }                                               //Küçük harfse yukarıdaki, büyük harfse aşağıdaki satır çalışıyor.
-        else if(password[i] >= 'A' && password[i] <= 'Z'){
-            password[i]= 'A' + ((password[i] - 'A' + scroll%26) + 26)%26;
-
+        if(isalpha(password[i])){                   //isalpha fonksiyonuyla girilen harfin alfabede olup olmadığını kontrol ediyoruz.
+            char character = islower(password[i])? 'a':'A';         //islower fonksiyonuyla harfin büyük ya da küçük olduğunu kontrol ediyoruz. Eğer küçükse a harfini değilse A harfini character değişkenine atıyoruz.
+            password[i]= character+(-character+ password[i] +scroll%26)%26;  //Önce a harfini çıkarıyoruz sonra öteleme miktarını buluyoruz ve a harfine ekliyoruz.
         }
+
     }
 
 }
@@ -74,8 +120,9 @@ char withFile(char text[]){     //Dosyadan okuma veya dosyaya yazma operasyonu.
             return 1;
         }
         printf("Lutfen Dosyanin Icerigini Giriniz\n");
-        scanf("%s", text);                      //Kullanıcıdan metni alıyoruz.
-        fprintf(fp, "%s", text);         	//Aldığımız metni dosyaya yazıyoruz.
+        gets(text);                         //gets fonksiyonlarıyla metnimizi alıyoruz.
+        gets(text);                          //Kullanıcıdan metni alıyoruz.
+        fputs(text,fp);         	    //Aldığımız metni dosyaya yazıyoruz.
         fclose(fp);                               //Ve dosyayı kapatıyoruz.
     }
 
@@ -85,26 +132,28 @@ char withFile(char text[]){     //Dosyadan okuma veya dosyaya yazma operasyonu.
         return 2;
     }
 
-    fscanf(fp, "%s", text);            //Dosyayı okuyoruz ve text değişkenine atıyoruz.
+    fgets(text, 100, fp);   //Dosyayı okuyoruz ve text değişkenine atıyoruz.
+    fclose(fp);
     return 0;
 
-	
-	
+
+
 }
-char deEncryptOperation() {
+char deEncryptOperation(int gecerleme) {
     int numberOfScroll,answer;
     char getText[100];
     printf("Islemi Dosya ile Yapacaksaniz 1\nYapmayacaksaniz Herhangi Bir Tusa Basin\n");
     scanf("%d",&answer);        //Kullanıcının dosyayla mı yoksa normal yolla mı ilem yapacağını soruyoruz.
     if(answer == 1){
         withFile(getText);
-        if(strlen(getText) ==0){ //Dosyayla yapılan işlemde dosya bulunamadıysa sonlandırıyoruz.
+        if(strlen(getText) ==gecerleme){ //Dosyayla yapılan işlemde dosya bulunamadıysa sonlandırıyoruz.
             return 1;}
     }
     else {
         printf("Lutfen Kirilacak Sifreyi Girin\nSifrenin Max Uzunlugu 100 Karakter Olmalidir\n");  //Normal yol için kullanıcıdan metni alıyoruz.
         takePassword:
-        scanf("%s", gets(getText));
+        gets(getText);              //gets fonksiyonlarıyla metnimizi alıyoruz.
+        gets(getText);
 
         if (strlen(getText) > 100) {                    //Şifre istenen miktardan uzunsa şifreyi tekrar yazdırıyoruz.
             printf("Sifre 100 Karakterden Buyuk Olamaz\n");
@@ -120,24 +169,30 @@ char deEncryptOperation() {
     }
 
     deEncrypt(getText, numberOfScroll); //Aldığımız verileri deşifreleme operasyonuna gönderiyoruz.
-    printf("Sifresi Cozulen Metin : %s\n\n\n", getText);    //Deşifrelenen metni yazdırıyoruz.
+    printf("Sifresi Cozulen Metin : ");    //Deşifrelenen metni yazdırıyoruz.
+    puts(getText);
+    printf("\n\n");
     return 0;
 
 }
-char encryptOperation() {           //Şifreleme operasyonunda ekstra olarak anlatacağım bir şey yok.
+
+char encryptOperation(int gecerleme) {           //Şifreleme operasyonunda ekstra olarak anlatacağım bir şey yok.
     char getText[100];              //Deşifreleme operasyonundaki yaptığımız şeylerden farklı olarak yaptığımız bir şey yok.
     int answer,numberOfScroll;
     printf("Islemi Dosya ile Yapacaksaniz 1\nYapmayacaksaniz Herhangi Bir Tusa Basin\n");
     scanf("%d",&answer);
     if(answer == 1){
         withFile(getText);
-        if(strlen(getText) == 0){
+        if(strlen(getText) ==gecerleme){
             return 1;}
     }
     if(answer!=1) {
-        printf("Lutfen Sifrelenecek Olan Metni Girin\n");
+        printf("Lutfen Sifrelenecek Olan Metni Girin\nSifrenin Max Uzunlugu 100 Karakter Olmalidir\n");
         takePassword:
-        scanf("%s", gets(getText));
+        gets(getText);
+        gets(getText);
+
+
         if (strlen(getText) > 100) {
             printf("Metin 100 Karakterden Buyuk Olamaz\n");
             fflush(stdin);
@@ -153,47 +208,11 @@ char encryptOperation() {           //Şifreleme operasyonunda ekstra olarak anl
     }
 
     encrypt(getText, numberOfScroll);
-    printf("Sifrelenen Metin : %s\n\n", getText);
+    printf("Sifrelenen Metin : ");
+    puts(getText);
+    printf("\n\n");
 
 
     return 0;
 }
-
-int main() {
-    int operation;
-
-    printf("Lutfen Yapmak Istediginiz Operasyonu Secin:\n");
-    askAgain:           //Kullanıcının yapmak istediği işlemi soruyoruz.
-    printf("1=Sifreleme\n"
-           "2=Desifreleme\n"
-           "3=Programi Sonlandir\n");
-    if(scanf("%d", &operation)!=1){         //Girilen değerin sayı olup olmadığını kontrol ediyoruz.
-        printf("Lutfen Sadece Sayi Giriniz\n");
-        fflush(stdin);
-        goto askAgain;
-    }
-    switch (operation) {            //Seçilen operasyona göre işlemi yapıyoruz.
-        case 1:
-            encryptOperation();
-            printf("Lutfen Diger Operasyonu Seciniz\n");
-            goto askAgain;
-        case 2:                     //Her operasyon için kullanıcıya işlemi tekrar soruyoruz. Eğer kullanıcı çıkış yapmak istiyorsa 3 sayısını girmeli.
-            deEncryptOperation();
-            printf("Lutfen Diger Operasyonu Seciniz\n");
-            goto askAgain;
-        case 3:
-            break;
-        default:        //Farklı bir değer girilirse kullanıcıya tekrar soruyoruz.
-            printf("Bilinmeyen Bir Islem Girdiniz\n\tLutfen Tekrar Deneyiniz\n");
-            goto askAgain;
-
-    }
-
-
-    return 0;
-}
-
-
-
-
 ```

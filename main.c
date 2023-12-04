@@ -8,8 +8,8 @@ char deEncryptOperation(int gecerleme); //Fonksiyonları tanımlıyoruz
 int main() {
     int operation,control;
     home:                   //Kullanıcının derleyicisine göre mininmum bir dosya uzunluğu alıyoruz.
-    printf("Readme De Bahsettigim Uzere Derleyicinize Gore Bir Secim Yapiniz\n0\n3\n");
-    if(scanf("%d",&control) != 1 && (control != 0 && control != 3)){
+    printf("Readme De Bahsettigim Uzere Derleyicinize Gore Bir Sayi Giriniz.\n\tBu Sayi Dosyanizin Minimum Uzunluğunu Belirtecektir");
+    if(scanf("%d",&control) != 1){
         printf("Lutfen Gecerli Bir Sayi Giriniz");
         fflush(stdin);
         goto home;
