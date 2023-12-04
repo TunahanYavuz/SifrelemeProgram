@@ -176,7 +176,7 @@ char deEncryptOperation(int gecerleme) {
 
     deEncrypt(getText, numberOfScroll); //Aldığımız verileri deşifreleme operasyonuna gönderiyoruz.
     printf("Sifresi Cozulen Metin : ");    //Deşifrelenen metni yazdırıyoruz.
-    while(i< strlen(getText)-3){
+    while(i< strlen(getText)-3){      //-3 olma sebebi dosya sonunu bulurken ekstra harf tanımlıyor. O harfleri yazmıyoruz.
         putchar(getText[i]);
         ++i;
     }
