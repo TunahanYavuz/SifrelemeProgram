@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 char encryptOperation(int gecerleme);
 char deEncryptOperation(int gecerleme); //Fonksiyonları tanımlıyoruz
 
 int main() {
-    int operation,gecerleme;
-    home:
+    int operation,control;
+    home:                   //Kullanıcının derleyicisine göre mininmum bir dosya uzunluğu alıyoruz.
     printf("Readme De Bahsettigim Uzere Derleyicinize Gore Bir Secim Yapiniz\n0\n3\n");
-    if(scanf("%d",&gecerleme)!=1&&(gecerleme!=0&&gecerleme!=3)){
+    if(scanf("%d",&control) != 1 && (control != 0 && control != 3)){
         printf("Lutfen Gecerli Bir Sayi Giriniz");
         fflush(stdin);
         goto home;
@@ -26,11 +27,11 @@ int main() {
     }
     switch (operation) {            //Seçilen operasyona göre işlemi yapıyoruz.
         case 1:
-            encryptOperation(gecerleme);
+            encryptOperation(control);
             printf("Lutfen Diger Operasyonu Seciniz\n");
             goto askAgain;
         case 2:                     //Her operasyon için kullanıcıya işlemi tekrar soruyoruz. Eğer kullanıcı çıkış yapmak istiyorsa 3 sayısını girmeli.
-            deEncryptOperation(gecerleme);
+            deEncryptOperation(control);
             printf("Lutfen Diger Operasyonu Seciniz\n");
             goto askAgain;
         case 3:
@@ -51,13 +52,11 @@ void encrypt(char password[], int scroll){
     unsigned int lenght = strlen(password);  //Dizinin uzunluğunu tuttuğumuz değer.
 
     for (int i = 0; i < lenght; ++i) {           //Şifreleme Operasyonumuz
-        if(password[i] >= 'a' && password[i] <= 'z'){
-            password[i]= 'a' + ((password[i] - 'a' + scroll % 26) + 26) % 26;
-        }                                               //Küçük harfse yukarıdaki, büyük harfse aşağıdaki satır çalışıyor.
-        else if(password[i] >= 'A' && password[i] <= 'Z'){
-            password[i]= 'A' + ((password[i] - 'A' + scroll%26) + 26)%26;
-
+        if(isalpha(password[i])){                   //isalpha fonksiyonuyla girilen harfin alfabede olup olmadığını kontrol ediyoruz.
+            char character = islower(password[i])? 'a':'A';         //islower fonksiyonuyla harfin büyük ya da küçük olduğunu kontrol ediyoruz. Eğer küçükse a harfini değilse A harfini character değişkenine atıyoruz.
+            password[i]= character+(-character+ password[i] +scroll%26)%26;  //Önce a harfini çıkarıyoruz sonra öteleme miktarını buluyoruz ve a harfine ekliyoruz.
         }
+
     }
 
 }
