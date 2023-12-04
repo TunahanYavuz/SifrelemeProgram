@@ -8,7 +8,7 @@ char deEncryptOperation(int gecerleme); //Fonksiyonları tanımlıyoruz
 int main() {
     int operation,control;
     home:                   //Kullanıcının derleyicisine göre mininmum bir dosya uzunluğu alıyoruz.
-    printf("Readme De Bahsettigim Uzere Derleyicinize Gore Bir Sayi Giriniz.\n\tBu Sayi Dosyanizin Minimum Uzunluğunu Belirtecektir\n");
+    printf("Readme De Bahsettigim Uzere Derleyicinize Gore Bir Sayi Giriniz.\n\tBu Sayi Dosyanizin Minimum Uzunlugunu Belirtecektir\n");
     if(scanf("%d",&control) != 1){
         printf("Lutfen Gecerli Bir Sayi Giriniz");
         fflush(stdin);
@@ -50,11 +50,11 @@ int main() {
 
 void encrypt(char password[], int scroll){
     unsigned int lenght = strlen(password);  //Dizinin uzunluğunu tuttuğumuz değer.
-
+    char character;
     for (int i = 0; i < lenght; ++i) {           //Şifreleme Operasyonumuz
         if(isalpha(password[i])){                   //isalpha fonksiyonuyla girilen harfin alfabede olup olmadığını kontrol ediyoruz.
-            char character = islower(password[i])? 'a':'A';         //islower fonksiyonuyla harfin büyük ya da küçük olduğunu kontrol ediyoruz. Eğer küçükse a harfini değilse A harfini character değişkenine atıyoruz.
-            password[i]= character+(-character+ password[i] +scroll%26)%26;  //Önce a harfini çıkarıyoruz sonra öteleme miktarını buluyoruz ve a harfine ekliyoruz.
+            character = islower(password[i])? 'a':'A';         //islower fonksiyonuyla harfin büyük ya da küçük olduğunu kontrol ediyoruz. Eğer küçükse a harfini değilse A harfini character değişkenine atıyoruz.
+            password[i]= character+(password[i]-character +scroll%26+26)%26;                     //Önce a harfini çıkarıyoruz sonra öteleme miktarını buluyoruz ve a harfine ekliyoruz.
         }
 
     }
@@ -102,7 +102,7 @@ char withFile(char text[]){     //Dosyadan okuma veya dosyaya yazma operasyonu.
 
 }
 char deEncryptOperation(int gecerleme) {
-    int numberOfScroll,answer;
+    int i=0,numberOfScroll,answer;
     char getText[100];
     printf("Islemi Dosya ile Yapacaksaniz 1\nYapmayacaksaniz Herhangi Bir Tusa Basin\n");
     scanf("%d",&answer);        //Kullanıcının dosyayla mı yoksa normal yolla mı ilem yapacağını soruyoruz.
@@ -132,7 +132,10 @@ char deEncryptOperation(int gecerleme) {
 
     deEncrypt(getText, numberOfScroll); //Aldığımız verileri deşifreleme operasyonuna gönderiyoruz.
     printf("Sifresi Cozulen Metin : ");    //Deşifrelenen metni yazdırıyoruz.
-    puts(getText);
+    while(i< strlen(getText)-3){
+        putchar(getText[i]);
+        ++i;
+    }
     printf("\n\n");
     return 0;
 
@@ -140,7 +143,7 @@ char deEncryptOperation(int gecerleme) {
 
 char encryptOperation(int gecerleme) {
     char getText[100];                  //Deşifreleme operasyonundaki yaptığımız şeylerden farklı olarak yaptığımız bir şey yok.
-    int answer,numberOfScroll;
+    int i=0,answer,numberOfScroll;
     printf("Islemi Dosya ile Yapacaksaniz 1\nYapmayacaksaniz Herhangi Bir Tusa Basin\n");
     scanf("%d",&answer);
     if(answer == 1){
@@ -171,7 +174,10 @@ char encryptOperation(int gecerleme) {
 
     encrypt(getText, numberOfScroll);
     printf("Sifrelenen Metin : ");
-    puts(getText);
+    while(i< strlen(getText)-3){
+        putchar(getText[i]);
+        ++i;
+    }
     printf("\n\n");
 
 
