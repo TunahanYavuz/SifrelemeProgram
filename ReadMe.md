@@ -1,6 +1,6 @@
 # AlgoritmaSifrelemeOdev
 ## Önemli Bilgi
-- Benim Kullandığım Program CLion. Eğer Başka Bir Derleyici veya Program Kullanıyorsanız Dosya Bulunamadı Hatasından Sonra Da Sizden Öteleme Miktarı İsteyecektir. Bu Durumu Düzeltmek İçin **if(strlen(getText) == 0)** Satırlarındaki '0' Değerini 3 Yapın.
+- Benim Kullandığım Program CLion. Eğer Başka Bir Derleyici veya Program Kullanıyorsanız Dosya Bulunamadı Hatasından Sonra Da Sizden Öteleme Miktarı İsteyecektir. Bu Durumu Düzeltmek İçin **Programın Başında Size Sorulan Soruyu Kendi Derleyicinize Göre Cevaplamalısınız** 
 ## Program Hakkında Genel Bilgiler
 - Şifreleme Programım Verdiğiniz Tam Sayı Kadar Girdiğiniz Metni İleri ya da Geri Doğru Öteleyebilmektedir.
 - Programı Çalıştırdığınızda 3 Seçenek Göreceksiniz Bunlardan 1.si Şifreleme, 2.si Deşifreleme, 3.sü Programı Sonlandırma Fonksiyonlarıdır.
@@ -31,10 +31,10 @@
 
 
 ### Ekran Görüntüleri
-![Şifreleme Görüntüsü](https://private-user-images.githubusercontent.com/143287857/287395481-3582f8b0-52a2-4aef-b9cf-811aac8bb14c.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MDE0Njk5MjMsIm5iZiI6MTcwMTQ2OTYyMywicGF0aCI6Ii8xNDMyODc4NTcvMjg3Mzk1NDgxLTM1ODJmOGIwLTUyYTItNGFlZi1iOWNmLTgxMWFhYzhiYjE0Yy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBSVdOSllBWDRDU1ZFSDUzQSUyRjIwMjMxMjAxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDIzMTIwMVQyMjI3MDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02NzJkY2FkNzc4ZTRmNTQ0NWQwODY0YzFmMjc5OTM0NGZhZDc3OGE4MTRlNmMwYTU5OWRjMzhmYjJlOWE1Mjc4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.fJfPtK9ZU-4c0C-FGL-Tb6SMM5SY8j_Qr-vAkSziFsQ)
+![Şifreleme Görüntüsü]()
 
 
-![Deşifreleme Görüntüsü](https://private-user-images.githubusercontent.com/143287857/287395491-fc0cdcb8-5c2a-41b9-9e84-83be06f798e1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MDE0Njk5MjMsIm5iZiI6MTcwMTQ2OTYyMywicGF0aCI6Ii8xNDMyODc4NTcvMjg3Mzk1NDkxLWZjMGNkY2I4LTVjMmEtNDFiOS05ZTg0LTgzYmUwNmY3OThlMS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBSVdOSllBWDRDU1ZFSDUzQSUyRjIwMjMxMjAxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDIzMTIwMVQyMjI3MDNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iOGE2ZGE4YmMyMjFhMzNmNjRkNTc4OTNhYTNkOTZkZWVkZDcyNTFiNTMyMzc5YzRkODhmMjE4MGUwZGFlMjllJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.M0qqcJevMUNVCtm4gPcUk9emFweT97CEUQxmsGeWxSc)
+![Deşifreleme Görüntüsü]()
 
 
 ### Kod İçeriği
