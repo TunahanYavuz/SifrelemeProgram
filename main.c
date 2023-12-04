@@ -65,12 +65,13 @@ void deEncrypt(char password[],int scrollToBack){
 }
 char withFile(char text[]){     //Dosyadan okuma veya dosyaya yazma operasyonu.
     FILE *fp;
-    int answer;
+    char c;
+    int i=0,answer;
     printf("Dosya Olusturup Okutmak Icin : 1\nDosyayi Okutmak Icin : Herhangi Bir Tusa Basin \n");
     scanf("%d",&answer);
 
     if(answer == 1){                                 //Cevaba göre sadece okuyor veya hem yazıp hem de okuyoruz.
-        fp= fopen("dosya.txt","w");   //Yazma işlemi için dosyayı w(write) şeklinde açıyoruz.
+        fp= fopen("input.txt","w");   //Yazma işlemi için dosyayı w(write) şeklinde açıyoruz.
                             //Buradaki dosya adını isteğinize göre değiştirebilirsiniz. Aslında dosya adını da kullanıcıdan alan bir program yazmak istemiştim ama henüz nasıl yapacağımı bilmiyorum.
         if(fp==NULL){
             printf("Dosya Acilamadi\n");        //Dosyanın geçerliliğini kontrol ediyoruz.
@@ -83,12 +84,17 @@ char withFile(char text[]){     //Dosyadan okuma veya dosyaya yazma operasyonu.
         fclose(fp);                               //Ve dosyayı kapatıyoruz.
     }
 
-    fp=fopen("dosya.txt","r");          //Okuma işlemi için dosyayı r(read) şeklinda açıyoruz.
+    fp=fopen("input.txt","r");          //Okuma işlemi için dosyayı r(read) şeklinda açıyoruz.
     if(fp==NULL){
         printf("Dosya Bulunamadi\n");
         return 2;
     }
-    fgets(text, 100, fp);   //Dosyayı okuyoruz ve text değişkenine atıyoruz.
+
+
+    while((c= fgetc(fp))!=EOF){  //Dosya bitene kadar her bir harfi text değişkenine atıyoruz.
+        text[i]=c;
+        ++i;
+    }
     fclose(fp);
     return 0;
 

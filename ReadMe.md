@@ -11,23 +11,23 @@
 
 ## Operasyonları Kullanma
 - Şifreleme Operasyonu Metni Girdiğiniz Sayı Kadar **Alfabe Sınırları** İçerisinde İleri Öteler.
-  Yani Eğer "C_de_kod_yaziyorum" Metnini Girerseniz ve Öteleme Miktarı Olarak 10 Sayısını Girerseniz Size Çıktı Olarak "M_no_uyn_ikjsiybew" Metnini Verecektir.
+  Yani Eğer "C de kod yaziyorum" Metnini Girerseniz ve Öteleme Miktarı Olarak 10 Sayısını Girerseniz Size Çıktı Olarak "M no uyn ikjsiybew" Metnini Verecektir.
 - Bu Çıktı Sizin Girdiğiniz Metnin Her Bir Harfinin 10 Kez İleri Ötelenmiş Halidir.
 
 ---
 
 - Deşifreleme Operasyonu Metni Girdiğiniz Sayı Kadar **Alfabe Sınırları** İçerisinde Geri Öteler.
-- Yani Yukarıdaki Verdiğim Örneği Kullanırsak ve Şifreyi Tekrar Anlamlı Bir Metne Dönüştürmek İstiyorsak "M_no_uyn_ikjsiybew" Metninin Her Bir Harfini 10 Kez Geri Ötelememiz Gerekir.
-- Program İçinde Deşifreleme Operasyonunu Seçtiğimzde, "M_no_uyn_ikjsiybew" Metnini Yazdığımızda ve Öteleme Miktarını 10 Olarak Girdiğimizde Çıktı Olarak "C_de_kod_yazıyorum" Metnini Alırız.
+- Yani Yukarıdaki Verdiğim Örneği Kullanırsak ve Şifreyi Tekrar Anlamlı Bir Metne Dönüştürmek İstiyorsak "M no uyn ikjsiybew" Metninin Her Bir Harfini 10 Kez Geri Ötelememiz Gerekir.
+- Program İçinde Deşifreleme Operasyonunu Seçtiğimzde, "M no uyn ikjsiybew" Metnini Yazdığımızda ve Öteleme Miktarını 10 Olarak Girdiğimizde Çıktı Olarak "C de kod yazıyorum" Metnini Alırız.
 
 
 
 ## Dosya Okuma ve Yazma
 - Şifreleme ve Deşifreleme Operasyonları İçin Aynı Dosya Okuma ve Yazma Operasyonu Çalışmaktadır.
-- Dosyanız Yoksa ve Dosya Oluşturma Seçeneğini Seçerseniz Kod Sizin İçin Bir 'dosya.txt' Dosyası Oluşturacaktır.
+- Dosyanız Yoksa ve Dosya Oluşturma Seçeneğini Seçerseniz Kod Sizin İçin Bir 'input.txt' Dosyası Oluşturacaktır.
 - Kendi Dosyanızı Oluşturmak İçin main.exe' nin Olduğu Klasörde Dosya Oluşturabilirsiniz.
-- Kendi Oluşturduğunuz Farklı İsimdeki Bir Dosyayı Okutmak İsterseniz Kod İçindeki **'dosya.txt'** yi Değiştirebilirsiniz.
-- Dosya İçinde Satır Boşluğu Bırakmayınız.
+- Kendi Oluşturduğunuz Farklı İsimdeki Bir Dosyayı Okutmak İsterseniz Kod İçindeki **'input.txt'** yi Değiştirebilirsiniz.
+
 
 
 
@@ -52,7 +52,7 @@ char deEncryptOperation(int gecerleme); //Fonksiyonları tanımlıyoruz
 int main() {
     int operation,control;
     home:                   //Kullanıcının derleyicisine göre mininmum bir dosya uzunluğu alıyoruz.
-    printf("Readme De Bahsettigim Uzere Derleyicinize Gore Bir Sayi Giriniz.\n\tBu Sayi Dosyanizin Minimum Uzunluğunu Belirtecektir");
+    printf("Readme De Bahsettigim Uzere Derleyicinize Gore Bir Sayi Giriniz.\n\tBu Sayi Dosyanizin Minimum Uzunluğunu Belirtecektir\n");
     if(scanf("%d",&control) != 1){
         printf("Lutfen Gecerli Bir Sayi Giriniz");
         fflush(stdin);
@@ -109,12 +109,13 @@ void deEncrypt(char password[],int scrollToBack){
 }
 char withFile(char text[]){     //Dosyadan okuma veya dosyaya yazma operasyonu.
     FILE *fp;
-    int answer;
+    char c;
+    int i=0,answer;
     printf("Dosya Olusturup Okutmak Icin : 1\nDosyayi Okutmak Icin : Herhangi Bir Tusa Basin \n");
     scanf("%d",&answer);
 
     if(answer == 1){                                 //Cevaba göre sadece okuyor veya hem yazıp hem de okuyoruz.
-        fp= fopen("dosya.txt","w");   //Yazma işlemi için dosyayı w(write) şeklinde açıyoruz.
+        fp= fopen("input.txt","w");   //Yazma işlemi için dosyayı w(write) şeklinde açıyoruz.
                             //Buradaki dosya adını isteğinize göre değiştirebilirsiniz. Aslında dosya adını da kullanıcıdan alan bir program yazmak istemiştim ama henüz nasıl yapacağımı bilmiyorum.
         if(fp==NULL){
             printf("Dosya Acilamadi\n");        //Dosyanın geçerliliğini kontrol ediyoruz.
@@ -127,13 +128,17 @@ char withFile(char text[]){     //Dosyadan okuma veya dosyaya yazma operasyonu.
         fclose(fp);                               //Ve dosyayı kapatıyoruz.
     }
 
-    fp=fopen("dosya.txt","r");          //Okuma işlemi için dosyayı r(read) şeklinda açıyoruz.
+    fp=fopen("input.txt","r");          //Okuma işlemi için dosyayı r(read) şeklinda açıyoruz.
     if(fp==NULL){
         printf("Dosya Bulunamadi\n");
         return 2;
     }
 
-    fgets(text, 100, fp);   //Dosyayı okuyoruz ve text değişkenine atıyoruz.
+
+    while((c= fgetc(fp))!=EOF){  //Dosya bitene kadar her bir harfi text değişkenine atıyoruz.
+        text[i]=c;
+        ++i;
+    }
     fclose(fp);
     return 0;
 
@@ -177,8 +182,8 @@ char deEncryptOperation(int gecerleme) {
 
 }
 
-char encryptOperation(int gecerleme) {           //Şifreleme operasyonunda ekstra olarak anlatacağım bir şey yok.
-    char getText[100];              //Deşifreleme operasyonundaki yaptığımız şeylerden farklı olarak yaptığımız bir şey yok.
+char encryptOperation(int gecerleme) {
+    char getText[100];                  //Deşifreleme operasyonundaki yaptığımız şeylerden farklı olarak yaptığımız bir şey yok.
     int answer,numberOfScroll;
     printf("Islemi Dosya ile Yapacaksaniz 1\nYapmayacaksaniz Herhangi Bir Tusa Basin\n");
     scanf("%d",&answer);
@@ -216,4 +221,5 @@ char encryptOperation(int gecerleme) {           //Şifreleme operasyonunda ekst
 
     return 0;
 }
+
 ```
