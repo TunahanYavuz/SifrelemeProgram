@@ -27,6 +27,7 @@
 - Dosyanız Yoksa ve Dosya Oluşturma Seçeneğini Seçerseniz Kod Sizin İçin Bir 'dosya.txt' Dosyası Oluşturacaktır.
 - Kendi Dosyanızı Oluşturmak İçin main.exe' nin Olduğu Klasörde Dosya Oluşturabilirsiniz.
 - Kendi Oluşturduğunuz Farklı İsimdeki Bir Dosyayı Okutmak İsterseniz Kod İçindeki **'dosya.txt'** yi Değiştirebilirsiniz.
+- Dosya İçinde Satır Boşluğu Bırakmayınız.
 
 
 

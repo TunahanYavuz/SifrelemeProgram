@@ -8,7 +8,7 @@ char deEncryptOperation(int gecerleme); //Fonksiyonları tanımlıyoruz
 int main() {
     int operation,control;
     home:                   //Kullanıcının derleyicisine göre mininmum bir dosya uzunluğu alıyoruz.
-    printf("Readme De Bahsettigim Uzere Derleyicinize Gore Bir Sayi Giriniz.\n\tBu Sayi Dosyanizin Minimum Uzunluğunu Belirtecektir");
+    printf("Readme De Bahsettigim Uzere Derleyicinize Gore Bir Sayi Giriniz.\n\tBu Sayi Dosyanizin Minimum Uzunluğunu Belirtecektir\n");
     if(scanf("%d",&control) != 1){
         printf("Lutfen Gecerli Bir Sayi Giriniz");
         fflush(stdin);
@@ -88,7 +88,6 @@ char withFile(char text[]){     //Dosyadan okuma veya dosyaya yazma operasyonu.
         printf("Dosya Bulunamadi\n");
         return 2;
     }
-
     fgets(text, 100, fp);   //Dosyayı okuyoruz ve text değişkenine atıyoruz.
     fclose(fp);
     return 0;
