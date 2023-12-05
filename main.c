@@ -6,7 +6,7 @@ char encryptOperation();
 char deEncryptOperation(); //Fonksiyonları tanımlıyoruz
 
 int main() {
-    int operation,control;
+    int operation;
 
     printf("Lutfen Yapmak Istediginiz Operasyonu Secin:\n");
     askAgain:           //Kullanıcının yapmak istediği işlemi soruyoruz.
