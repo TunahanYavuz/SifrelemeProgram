@@ -60,7 +60,7 @@ char withFile(char text[]){     //Dosyadan okuma veya dosyaya yazma operasyonu.
     FILE *fp;
     char c;
     int i=0,answer;
-    printf("Dosya Olusturup Yazmak Icin : 1\nDosyayi Okutmak Icin : Herhangi Bir Tusa Basin \n");
+    printf("Dosya Olusturup Okutmak Icin : 1\nSadece Dosyayi Okutmak Icin : Herhangi Bir Tusa Basin \n");
     scanf("%d",&answer);
 
     if(answer == 1){                                 //Cevaba göre sadece okuyor veya hem yazıp hem de okuyoruz.
@@ -76,7 +76,7 @@ char withFile(char text[]){     //Dosyadan okuma veya dosyaya yazma operasyonu.
         fputs(text,fp);         	    //Aldığımız metni dosyaya yazıyoruz.
         fclose(fp);                               //Ve dosyayı kapatıyoruz.
     }
-
+    fflush(stdin);
     fp=fopen("input.txt","r");          //Okuma işlemi için dosyayı r(read) şeklinda açıyoruz.
     if(fp==NULL){
         printf("Dosya Bulunamadi\n");
