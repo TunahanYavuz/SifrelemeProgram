@@ -2,18 +2,11 @@
 #include <string.h>
 #include <ctype.h>
 
-char encryptOperation(int gecerleme);
-char deEncryptOperation(int gecerleme); //Fonksiyonları tanımlıyoruz
+char encryptOperation();
+char deEncryptOperation(); //Fonksiyonları tanımlıyoruz
 
 int main() {
     int operation,control;
-    home:                   //Kullanıcının derleyicisine göre mininmum bir dosya uzunluğu alıyoruz.
-    printf("Readme De Bahsettigim Uzere Derleyicinize Gore Bir Sayi Giriniz.\n\tBu Sayi Dosyanizin Minimum Uzunlugunu Belirtecektir\n");
-    if(scanf("%d",&control) != 1){
-        printf("Lutfen Gecerli Bir Sayi Giriniz");
-        fflush(stdin);
-        goto home;
-    }
 
     printf("Lutfen Yapmak Istediginiz Operasyonu Secin:\n");
     askAgain:           //Kullanıcının yapmak istediği işlemi soruyoruz.
@@ -27,11 +20,11 @@ int main() {
     }
     switch (operation) {            //Seçilen operasyona göre işlemi yapıyoruz.
         case 1:
-            encryptOperation(control);
+            encryptOperation();
             printf("Lutfen Diger Operasyonu Seciniz\n");
             goto askAgain;
         case 2:                     //Her operasyon için kullanıcıya işlemi tekrar soruyoruz. Eğer kullanıcı çıkış yapmak istiyorsa 3 sayısını girmeli.
-            deEncryptOperation(control);
+            deEncryptOperation();
             printf("Lutfen Diger Operasyonu Seciniz\n");
             goto askAgain;
         case 3:
@@ -75,7 +68,7 @@ char withFile(char text[]){     //Dosyadan okuma veya dosyaya yazma operasyonu.
                             //Buradaki dosya adını isteğinize göre değiştirebilirsiniz. Aslında dosya adını da kullanıcıdan alan bir program yazmak istemiştim ama henüz nasıl yapacağımı bilmiyorum.
         if(fp==NULL){
             printf("Dosya Acilamadi\n");        //Dosyanın geçerliliğini kontrol ediyoruz.
-            return 1;
+            return 0;
         }
         printf("Lutfen Dosyanin Icerigini Giriniz\n");
         gets(text);                         //gets fonksiyonlarıyla metnimizi alıyoruz.
@@ -87,7 +80,7 @@ char withFile(char text[]){     //Dosyadan okuma veya dosyaya yazma operasyonu.
     fp=fopen("input.txt","r");          //Okuma işlemi için dosyayı r(read) şeklinda açıyoruz.
     if(fp==NULL){
         printf("Dosya Bulunamadi\n");
-        return 2;
+        return 0;
     }
 
 
@@ -96,19 +89,19 @@ char withFile(char text[]){     //Dosyadan okuma veya dosyaya yazma operasyonu.
         ++i;
     }
     fclose(fp);
-    return 0;
+    return 1;
 
 
 
 }
-char deEncryptOperation(int gecerleme) {
+char deEncryptOperation() {
     int i=0,numberOfScroll,answer;
     char getText[1000];
     printf("Islemi Dosya ile Yapacaksaniz 1\nYapmayacaksaniz Herhangi Bir Tusa Basin\n");
     scanf("%d",&answer);        //Kullanıcının dosyayla mı yoksa normal yolla mı ilem yapacağını soruyoruz.
     if(answer == 1){
-        withFile(getText);
-        if(strlen(getText) ==gecerleme){ //Dosyayla yapılan işlemde dosya bulunamadıysa sonlandırıyoruz.
+
+        if(!withFile(getText)){ //Dosyayla yapılan işlemde dosya bulunamadıysa sonlandırıyoruz.
             return 1;}
     }
     else {
@@ -141,14 +134,14 @@ char deEncryptOperation(int gecerleme) {
 
 }
 
-char encryptOperation(int gecerleme) {
+char encryptOperation() {
     char getText[1000];                  //Deşifreleme operasyonundaki yaptığımız şeylerden farklı olarak yaptığımız bir şey yok.
     int i=0,answer,numberOfScroll;
     printf("Islemi Dosya ile Yapacaksaniz 1\nYapmayacaksaniz Herhangi Bir Tusa Basin\n");
     scanf("%d",&answer);
     if(answer == 1){
-        withFile(getText);
-        if(strlen(getText) ==gecerleme){
+
+        if(!withFile(getText)){
             return 1;}
     }
     if(answer!=1) {
