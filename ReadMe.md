@@ -9,12 +9,14 @@
 
 
 ## Operasyonları Kullanma
+### Şifereleme Operasyonu
 - Şifreleme Operasyonu Metni Girdiğiniz Sayı Kadar **Alfabe Sınırları** İçerisinde İleri Öteler.
   Yani Eğer "C de kod yaziyorum" Metnini Girerseniz ve Öteleme Miktarı Olarak 10 Sayısını Girerseniz Size Çıktı Olarak "M no uyn ikjsiybew" Metnini Verecektir.
 - Bu Çıktı Sizin Girdiğiniz Metnin Her Bir Harfinin 10 Kez İleri Ötelenmiş Halidir.
 
 ---
 
+### Deşifreleme Operasyonu
 - Deşifreleme Operasyonu Metni Girdiğiniz Sayı Kadar **Alfabe Sınırları** İçerisinde Geri Öteler.
 - Yani Yukarıdaki Verdiğim Örneği Kullanırsak ve Şifreyi Tekrar Anlamlı Bir Metne Dönüştürmek İstiyorsak "M no uyn ikjsiybew" Metninin Her Bir Harfini 10 Kez Geri Ötelememiz Gerekir.
 - Program İçinde Deşifreleme Operasyonunu Seçtiğimzde, "M no uyn ikjsiybew" Metnini Yazdığımızda ve Öteleme Miktarını 10 Olarak Girdiğimizde Çıktı Olarak "C de kod yazıyorum" Metnini Alırız.
@@ -24,7 +26,7 @@
 ## Dosya Okuma ve Yazma
 - Şifreleme ve Deşifreleme Operasyonları İçin Aynı Dosya Okuma ve Yazma Operasyonu Çalışmaktadır.
 - Dosyanız Yoksa ve Dosya Oluşturma Seçeneğini Seçerseniz Kod Sizin İçin Bir 'input.txt' Dosyası Oluşturacaktır.
-- Kendi Dosyanızı Oluşturmak İçin main.exe' nin Olduğu Klasörde Dosya Oluşturabilirsiniz.
+- Kendi Dosyanızı Oluşturmak İçin SifrelemeProgram.exe' nin Olduğu Klasörde Dosya Oluşturabilirsiniz.
 - Kendi Oluşturduğunuz Farklı İsimdeki Bir Dosyayı Okutmak İsterseniz Kod İçindeki **'input.txt'** yi Değiştirebilirsiniz.
 
 
@@ -153,7 +155,7 @@ char deEncryptOperation() {
         gets(getText);              //gets fonksiyonlarıyla metnimizi alıyoruz.
         gets(getText);
 
-        if (strlen(getText) > 1000) {                    //Şifre istenen miktardan uzunsa şifreyi tekrar yazdırıyoruz.
+        if (strlen(getText) > 1000) {                    //Metin istenen miktardan uzunsa şifreyi tekrar yazdırıyoruz.
             printf("Sifre 1000 Karakterden Buyuk Olamaz\n");
             goto takePassword;
         }
@@ -178,7 +180,7 @@ char deEncryptOperation() {
 }
 
 char encryptOperation() {
-    char getText[1000];                  //Deşifreleme operasyonundaki yaptığımız şeylerden farklı olarak yaptığımız bir şey yok.
+    char getText[1000];                  //Mesajları ve fonksiyonları şifrelemeye göre uyarlıyoruz.
     int i=0,answer,numberOfScroll;
     printf("Islemi Dosya ile Yapacaksaniz 1\nYapmayacaksaniz Herhangi Bir Tusa Basin\n");
     scanf("%d",&answer);
