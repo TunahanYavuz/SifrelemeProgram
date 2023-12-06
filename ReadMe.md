@@ -147,7 +147,7 @@ char deEncryptOperation() {
     if(answer == 1){
 
         if(!withFile(getText)){ //Dosyayla yapılan işlemde dosya bulunamadıysa sonlandırıyoruz.
-            return 1;}
+            return 0;}
     }
     else {
         printf("Lutfen Kirilacak Sifreyi Girin\nSifrenin Max Uzunlugu 1000 Karakter Olmalidir\n");  //Normal yol için kullanıcıdan metni alıyoruz.
@@ -175,7 +175,7 @@ char deEncryptOperation() {
         ++i;
     }
     printf("\n\n");
-    return 0;
+    return 1;
 
 }
 
@@ -187,7 +187,7 @@ char encryptOperation() {
     if(answer == 1){
 
         if(!withFile(getText)){
-            return 1;}
+            return 0;}
     }
     if(answer!=1) {
         printf("Lutfen Sifrelenecek Olan Metni Girin\nSifrenin Max Uzunlugu 1000 Karakter Olmalidir\n");
@@ -219,7 +219,7 @@ char encryptOperation() {
     printf("\n\n");
 
 
-    return 0;
+    return 1;
 }
 
 ```

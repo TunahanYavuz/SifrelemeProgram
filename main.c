@@ -98,11 +98,12 @@ char deEncryptOperation() {
     int i=0,numberOfScroll,answer;
     char getText[1000];
     printf("Islemi Dosya ile Yapacaksaniz 1\nYapmayacaksaniz Herhangi Bir Tusa Basin\n");
-    scanf("%d",&answer);        //Kullanıcının dosyayla mı yoksa normal yolla mı ilem yapacağını soruyoruz.
+    scanf("%d",&answer);
+    //Kullanıcının dosyayla mı yoksa normal yolla mı ilem yapacağını soruyoruz.
     if(answer == 1){
 
         if(!withFile(getText)){ //Dosyayla yapılan işlemde dosya bulunamadıysa sonlandırıyoruz.
-            return 1;}
+            return 0;}
     }
     else {
         printf("Lutfen Kirilacak Sifreyi Girin\nSifrenin Max Uzunlugu 1000 Karakter Olmalidir\n");  //Normal yol için kullanıcıdan metni alıyoruz.
@@ -110,7 +111,7 @@ char deEncryptOperation() {
         gets(getText);              //gets fonksiyonlarıyla metnimizi alıyoruz.
         gets(getText);
 
-        if (strlen(getText) > 1000) {                    //Şifre istenen miktardan uzunsa şifreyi tekrar yazdırıyoruz.
+        if (strlen(getText) > 1000) {                    //Metin istenen miktardan uzunsa şifreyi tekrar yazdırıyoruz.
             printf("Sifre 1000 Karakterden Buyuk Olamaz\n");
             goto takePassword;
         }
@@ -130,19 +131,19 @@ char deEncryptOperation() {
         ++i;
     }
     printf("\n\n");
-    return 0;
+    return 1;
 
 }
 
 char encryptOperation() {
-    char getText[1000];                  //Deşifreleme operasyonundaki yaptığımız şeylerden farklı olarak yaptığımız bir şey yok.
+    char getText[1000];                  //Mesajları ve fonksiyonları şifrelemeye göre uyarlıyoruz.
     int i=0,answer,numberOfScroll;
     printf("Islemi Dosya ile Yapacaksaniz 1\nYapmayacaksaniz Herhangi Bir Tusa Basin\n");
     scanf("%d",&answer);
     if(answer == 1){
 
         if(!withFile(getText)){
-            return 1;}
+            return 0;}
     }
     if(answer!=1) {
         printf("Lutfen Sifrelenecek Olan Metni Girin\nSifrenin Max Uzunlugu 1000 Karakter Olmalidir\n");
@@ -174,5 +175,5 @@ char encryptOperation() {
     printf("\n\n");
 
 
-    return 0;
+    return 1;
 }
