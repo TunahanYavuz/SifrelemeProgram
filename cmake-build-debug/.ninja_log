@@ -1,3 +1,17 @@
 # ninja log v5
 2	74	7235953291049587	CMakeFiles/SifrelemeProgram.dir/main.c.obj	ce6dc5fe3de9dc5f
 75	152	7235953291790951	SifrelemeProgram.exe	d3a367bec5d9a989
+4	197	7236622218423157	CMakeFiles/SifrelemeProgram.dir/main.c.obj	ce6dc5fe3de9dc5f
+199	423	7236622220618789	SifrelemeProgram.exe	d3a367bec5d9a989
+4	159	7236623596609255	CMakeFiles/SifrelemeProgram.dir/main.c.obj	ce6dc5fe3de9dc5f
+160	329	7236623598237488	SifrelemeProgram.exe	d3a367bec5d9a989
+3	135	7236645445889851	CMakeFiles/SifrelemeProgram.dir/main.c.obj	ce6dc5fe3de9dc5f
+135	293	7236645447377553	SifrelemeProgram.exe	d3a367bec5d9a989
+3	148	7236655171683070	CMakeFiles/SifrelemeProgram.dir/main.c.obj	ce6dc5fe3de9dc5f
+151	290	7236655173043678	SifrelemeProgram.exe	d3a367bec5d9a989
+4	161	7236668160626642	CMakeFiles/SifrelemeProgram.dir/main.c.obj	ce6dc5fe3de9dc5f
+162	332	7236668162299787	SifrelemeProgram.exe	d3a367bec5d9a989
+6	182	7236668964574674	CMakeFiles/SifrelemeProgram.dir/main.c.obj	ce6dc5fe3de9dc5f
+182	352	7236668966178925	SifrelemeProgram.exe	d3a367bec5d9a989
+3	127	7236669242288447	CMakeFiles/SifrelemeProgram.dir/main.c.obj	ce6dc5fe3de9dc5f
+128	264	7236669243601410	SifrelemeProgram.exe	d3a367bec5d9a989
