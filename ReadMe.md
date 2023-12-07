@@ -33,10 +33,16 @@
 
 
 ### Ekran Görüntüleri
-![Şifreleme Görüntüsü](https://github.com/TunahanYavuz/SifrelemeProgram/assets/143287857/a6794560-d49b-445d-ab8c-2fd384934ad4)
+![Şifreleme Görüntüsü](https://github.com/TunahanYavuz/SifrelemeProgram/assets/143287857/e1b91dd3-e044-40f8-87ef-5e755aec5b26)
 
 
-![Deşifreleme Görüntüsü](https://github.com/TunahanYavuz/SifrelemeProgram/assets/143287857/d870b4a5-e1dc-48a7-9b24-0ac195b3a20f)
+![Deşifreleme Görüntüsü](https://github.com/TunahanYavuz/SifrelemeProgram/assets/143287857/856035f0-c055-4fec-a9ee-fefda1e77f8a)
+
+
+![Şifreleme Görüntüsü](https://github.com/TunahanYavuz/SifrelemeProgram/assets/143287857/241ea010-7c10-4f5c-8762-698028083544)
+
+
+![Deşifreleme Görüntüsü](https://github.com/TunahanYavuz/SifrelemeProgram/assets/143287857/0c5390fb-1ad7-4555-b2ed-6e684ff132c7)
 
 
 ### Kod İçeriği
@@ -53,8 +59,8 @@ char deEncryptOperation(); //Fonksiyonları tanımlıyoruz
 
 int main() {
     int operation;
-    setlocale(LC_ALL,"Turkish");    //Türkçe karakter ekleme. Mesajları türkçe vermek için.
-    wprintf(L"Lutfen Yapmak İstediğiniz Operasyonu Seçin:\n");
+    setlocale(LC_ALL,"Turkish");    //Türkçe karakter ekleme. Mesajları Türkçe vermek için.
+    wprintf(L"Lütfen Yapmak İstediğiniz Operasyonu Seçin:\n");
     askAgain:           //Kullanıcının yapmak istediği işlemi soruyoruz.
     wprintf(L"1=Şifreleme\n"
            "2=Deşifreleme\n"

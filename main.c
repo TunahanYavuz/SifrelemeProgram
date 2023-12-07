@@ -8,8 +8,8 @@ char deEncryptOperation(); //Fonksiyonları tanımlıyoruz
 
 int main() {
     int operation;
-    setlocale(LC_ALL,"Turkish");    //Türkçe karakter ekleme. Mesajları türkçe vermek için.
-    wprintf(L"Lutfen Yapmak İstediğiniz Operasyonu Seçin:\n");
+    setlocale(LC_ALL,"Turkish");    //Türkçe karakter ekleme. Mesajları Türkçe vermek için.
+    wprintf(L"Lütfen Yapmak İstediğiniz Operasyonu Seçin:\n");
     askAgain:           //Kullanıcının yapmak istediği işlemi soruyoruz.
     wprintf(L"1=Şifreleme\n"
            "2=Deşifreleme\n"
@@ -107,7 +107,7 @@ char deEncryptOperation() {
             return 0;}
     }
     else {
-        wprintf(L"Lütfen Kırılacak Şifreyi Girin\nŞifrenin Max Uzunlugu 1000 Karakter Olmalıdır\n");  //Normal yol için kullanıcıdan metni alıyoruz.
+        wprintf(L"Lütfen Kırılacak Şifreyi Girin\nŞifrenin Max Uzunluğu 1000 Karakter Olmalıdır\n");  //Normal yol için kullanıcıdan metni alıyoruz.
         takePassword:
         gets(getText);              //gets fonksiyonlarıyla metnimizi alıyoruz.
         gets(getText);
@@ -126,7 +126,7 @@ char deEncryptOperation() {
     }
 
     deEncrypt(getText, numberOfScroll); //Aldığımız verileri deşifreleme operasyonuna gönderiyoruz.
-    wprintf(L"Şifresi Çözulen Metin :\n");    //Deşifrelenen metni yazdırıyoruz.
+    wprintf(L"Şifresi Çözülen Metin \n");    //Deşifrelenen metni yazdırıyoruz.
     while(i<= strlen(getText)){
         putchar(getText[i]);
         ++i;
@@ -147,7 +147,7 @@ char encryptOperation() {
             return 0;}
     }
     if(answer!=1) {
-        wprintf(L"Lütfen Kırılacak Şifreyi Girin\nŞifrenin Max Uzunlugu 1000 Karakter Olmalıdır\n");
+        wprintf(L"Lütfen Kırılacak Şifreyi Girin\nŞifrenin Max Uzunluğu 1000 Karakter Olmalıdır\n");
         takePassword:
         gets(getText);
         gets(getText);
