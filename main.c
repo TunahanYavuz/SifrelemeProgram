@@ -71,7 +71,7 @@ char withFile(char text[]){     //Dosyadan okuma veya dosyaya yazma operasyonu.
             wprintf(L"Dosya Açılamadı\n----------------------\n");        //Dosyanın geçerliliğini kontrol ediyoruz.
             return 0;
         }
-        wprintf(L"Lütfen Dosyanın İçeriğini Giriniz\n----------------------\n");
+        wprintf(L"Lütfen Dosyanın İçeriğini Giriniz\n");
         gets(text);                         //gets fonksiyonlarıyla metnimizi alıyoruz.
         gets(text);                          //Kullanıcıdan metni alıyoruz.
         fputs(text,fp);         	    //Aldığımız metni dosyaya yazıyoruz.
