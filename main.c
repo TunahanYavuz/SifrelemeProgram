@@ -107,10 +107,11 @@ char deEncryptOperation() {
             return 0;}
     }
     else {
+        fflush(stdin);  //Sayı harici bir şey girildiyse bellekten siliyoruz.
         wprintf(L"Lütfen Kırılacak Şifreyi Girin\nŞifrenin Max Uzunluğu 1000 Karakter Olmalıdır\n");  //Normal yol için kullanıcıdan metni alıyoruz.
         takePassword:
-        gets(getText);              //gets fonksiyonlarıyla metnimizi alıyoruz.
-        gets(getText);
+        gets(getText);              //gets fonksiyonuyla metnimizi alıyoruz.
+
 
         if (strlen(getText) > 1000) {                    //Metin istenen miktardan uzunsa şifreyi tekrar yazdırıyoruz.
             wprintf(L"Şifre 1000 Karakterden Büyük Olamaz\n----------------------\n");
@@ -146,11 +147,12 @@ char encryptOperation() {
         if(!withFile(getText)){
             return 0;}
     }
-    if(answer!=1) {
+    else{
+        fflush(stdin);
         wprintf(L"Lütfen Şifrelenecek Metni Yazınız\nMetnin Max Uzunluğu 1000 Karakter Olmalıdır\n");
         takePassword:
         gets(getText);
-        gets(getText);
+
 
 
         if (strlen(getText) > 1000) {

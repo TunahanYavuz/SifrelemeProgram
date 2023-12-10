@@ -33,16 +33,16 @@
 
 
 ### Ekran Görüntüleri
-![Şifreleme Görüntüsü](https://github.com/TunahanYavuz/SifrelemeProgram/assets/143287857/e1b91dd3-e044-40f8-87ef-5e755aec5b26)
+![Şifreleme Görüntüsü](https://github.com/TunahanYavuz/SifrelemeProgram/assets/143287857/34d57b2e-99b8-4092-b7af-93fd630e3af2)
 
 
-![Deşifreleme Görüntüsü](https://github.com/TunahanYavuz/SifrelemeProgram/assets/143287857/856035f0-c055-4fec-a9ee-fefda1e77f8a)
+![Deşifreleme Görüntüsü](https://github.com/TunahanYavuz/SifrelemeProgram/assets/143287857/14f35417-7785-466b-ae1f-742583e91acd)
 
 
-![Şifreleme Görüntüsü](https://github.com/TunahanYavuz/SifrelemeProgram/assets/143287857/241ea010-7c10-4f5c-8762-698028083544)
+![Şifreleme Görüntüsü](https://github.com/TunahanYavuz/SifrelemeProgram/assets/143287857/fdb685ad-ab1e-4bff-b17e-e82f5cd83d35)
 
 
-![Deşifreleme Görüntüsü](https://github.com/TunahanYavuz/SifrelemeProgram/assets/143287857/0c5390fb-1ad7-4555-b2ed-6e684ff132c7)
+![Deşifreleme Görüntüsü](https://github.com/TunahanYavuz/SifrelemeProgram/assets/143287857/eb366e62-7c38-4773-8ee8-cc8eb48429b9)
 
 
 ### Kod İçeriği
@@ -158,10 +158,11 @@ char deEncryptOperation() {
             return 0;}
     }
     else {
+        fflush(stdin);  //Sayı harici bir şey girildiyse bellekten siliyoruz.
         wprintf(L"Lütfen Kırılacak Şifreyi Girin\nŞifrenin Max Uzunluğu 1000 Karakter Olmalıdır\n");  //Normal yol için kullanıcıdan metni alıyoruz.
         takePassword:
-        gets(getText);              //gets fonksiyonlarıyla metnimizi alıyoruz.
-        gets(getText);
+        gets(getText);              //gets fonksiyonuyla metnimizi alıyoruz.
+
 
         if (strlen(getText) > 1000) {                    //Metin istenen miktardan uzunsa şifreyi tekrar yazdırıyoruz.
             wprintf(L"Şifre 1000 Karakterden Büyük Olamaz\n----------------------\n");
@@ -197,11 +198,12 @@ char encryptOperation() {
         if(!withFile(getText)){
             return 0;}
     }
-    if(answer!=1) {
+    else{
+        fflush(stdin);
         wprintf(L"Lütfen Şifrelenecek Metni Yazınız\nMetnin Max Uzunluğu 1000 Karakter Olmalıdır\n");
         takePassword:
         gets(getText);
-        gets(getText);
+
 
 
         if (strlen(getText) > 1000) {
