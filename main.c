@@ -61,7 +61,7 @@ char withFile(char text[]){     //Dosyadan okuma veya dosyaya yazma operasyonu.
     FILE *fp;
     char c;
     int i=0,answer;
-    wprintf(L"Dosya Oluşturup Okutmak İçin : 1\nSadece Dosyayı Okutmak İçin : Herhangi Bir Tuş Basın \n----------------------\n");
+    wprintf(L"Dosya Oluşturup Okutmak İçin : 1\nSadece Dosyayı Okutmak İçin : Herhangi Bir Tuşa Basın \n----------------------\n");
     scanf("%d",&answer);
 
     if(answer == 1){                                 //Cevaba göre sadece okuyor veya hem yazıp hem de okuyoruz.
